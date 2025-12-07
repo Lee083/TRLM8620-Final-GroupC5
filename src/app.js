@@ -61,22 +61,24 @@ else {
     console.log("found locale in storage, using that value");
     locale = localStorage.getItem("locale");
 }
+
 //function to update and save locale
 var updateLocale = async(newLocale) => {
-    //update the locale
     locale = newLocale;
-    //store the new locale
     localStorage.setItem('locale', locale);
-    console.log("Locale changed to: " + locale);
-    
-    //fetch new products list and refresh stringsJSON
-    await getProductsList(locale);
 
-    //refresh the shopping cart
-    console.log(shoppingCart);
-    console.log(productList);
+    console.log("Locale changed to: " + locale);
+
+    // ⭐ 重新加载 i18n 文本
+    await i18n.loadStringsJSON(locale);
+
+    // ⭐ 重新加载商品列表（因为描述和价格符号会变化）
+    await getProductsList();
+
+    // ⭐ 刷新购物车（保证产品更新）
     reloadCart();
 
+    // ⭐ 重新渲染整个页面
     router();
 }
 
@@ -239,48 +241,40 @@ particlesJS.load('particles-js', './plugins/assets/particlesjs-config.json', fun
 // The router code. Takes a URL, checks against the list of supported routes and then renders the corresponding content page.
 const router = async () => {
 
-    // Lazy load view element:
-    const header = null || document.getElementById('header_container');
-    const content = null || document.getElementById('page_container');
-    const footer = null || document.getElementById('footer_container');
-    const cart = null || document.querySelector('.cartSlider');
-    const ham = null || document.querySelector('.hamSlider');
+    // ⭐ 1. 先加载 i18n 文本
+    await i18n.loadStringsJSON(locale);
 
-    //grab products from JSON file
-    if(productList.get("droids").size == 0 && productList.get("vehicles").size == 0) {
+    // ⭐ 2. 加载产品（必须在加载 i18n 之后）
+    if (productList.get("droids").size === 0 && productList.get("vehicles").size === 0) {
         await getProductsList();
     }
-    
-    // Render the Header, footer, and empty cart of the page
+
+    // ⭐ 3. 设置页面 <title>
+    document.title = i18n.getString("page", "title");
+
+    // ⭐ 4. 渲染导航栏、购物车等组件
+    const header = document.getElementById('header_container');
+    const content = document.getElementById('page_container');
+    const cart = document.querySelector('.cartSlider');
+
     cart.innerHTML = await Cart.render();
     await Cart.after_render();
-   
+
     header.innerHTML = await Navbar.render();
     await Navbar.after_render();
-    // footer.innerHTML = await Bottombar.render();
-    // await Bottombar.after_render();
 
-    //add some dummy orders if there's nothing there
-    if(orderHistory.length == 0) {
-        dummyOrders();
-    }
-
-    // Get the parsed URl from the addressbar
+    // ⭐ 5. 路由解析
     let request = Utils.parseRequestURL();
+    let parsedURL = (request.resource ? './' + request.resource : './')
+                  + (request.id ? '/:id' : '');
 
-    // Parse the URL and if it has an id part, change it with the string ":id"
-    let parsedURL = (request.resource ? './' + request.resource : './') + (request.id ? '/:id' : '') + (request.verb ? './' + request.verb : '')
-    
-    // Get the page from our hash of supported routes.
-    // If the parsed URL is not in our list of supported routes, select the 404 page instead
-    let page = routes[parsedURL] ? routes[parsedURL] : Error404
+    let page = routes[parsedURL] ? routes[parsedURL] : Error404;
 
-    //lazy load and then render the correct page
+    // ⭐ 6. 加载页面模块并渲染
     let loadPage = await import(`./views/pages/${page}`);
     content.innerHTML = await loadPage.default.render();
     await loadPage.default.after_render();
-    
-}
+};
 
 
 // Listen on hash change:

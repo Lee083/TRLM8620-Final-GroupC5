@@ -20,6 +20,10 @@ ol, ul, li {
   list-style: none;
 }
 
+body {
+    font-family: 'Montserrat', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
 html {
   width: 100%;
   height: 100%;
@@ -963,4 +967,10 @@ p {
 body {
     font-family: 'Noto Sans SC', 'Montserrat', sans-serif;
 }
+
+#greetingText {
+    white-space: nowrap;
+    font-size: clamp(12px, 2vw, 18px);
+}
 /*# sourceMappingURL=style.css.map */
+

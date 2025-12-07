@@ -1,5 +1,5 @@
 import Utils from "../../services/Utils.js";
-import { locale, updateLocale, showCart} from "../../app.js";
+import { locale, updateLocale, showCart } from "../../app.js";
 import i18n from "../../services/i18n.js";
 
 //global dropdown element reference
@@ -7,6 +7,7 @@ let drop;
 
 let Navbar = {
     render: async () => {
+
         //fetch locale-sensitive strings via i18n method
         let searchPlaceholder = i18n.getString("Navbar", "searchPlaceholder");
         let searchButtonLabel = i18n.getString("Navbar", "searchButtonLabel");
@@ -25,111 +26,111 @@ let Navbar = {
         let localeCN = i18n.getString("LocaleSelector", "localeCN");
         let localeNL = i18n.getString("LocaleSelector", "localeNL");
 
+        // ⭐ 动态决定 logo 图
+        let logoPath = "img/logo.png";
+        if (locale === "zh-CN") {
+            logoPath = "img/logo_zh.png";
+        }
 
-        //view is solely for HTML markup, contains no static text
-        let view =
-        `<header>
-        <!-- logo, search bar, local, profile drop down -->
-        <section>
-            <img src="img/logo.png" id="logo" alt="${logoAlt}">
-        </section>
-        <section id="search">
-            <div id="bar">
-                <input type="text" class="searchTerm" placeholder="${searchPlaceholder}" aria-label="${searchButtonLabel}">
-                <button type="submit" class="searchButton" aria-label="${searchButtonLabel}">
-                    <img src="img/search.svg" id="searchIcon" alt="${searchIconAlt}">
-                </button>
-             </div>
-        </section>
-        <section id="headOptions">
-            <div class="dropdown">
-                <div class="dropbtn">
-                    <h2 id="greetingText">${greetingText}</h2>
-                    <img src="img/arrow-down.svg" id="downArrow" alt="${arrowAlt}">
+        // ⭐ HTML 里只放变量，不放 JS 逻辑
+        let view = `
+        <header>
+            <section>
+                <img src="${logoPath}" id="logo" alt="${logoAlt}">
+            </section>
+
+            <section id="search">
+                <div id="bar">
+                    <input type="text" class="searchTerm" placeholder="${searchPlaceholder}" aria-label="${searchButtonLabel}">
+                    <button type="submit" class="searchButton" aria-label="${searchButtonLabel}">
+                        <img src="img/search.svg" id="searchIcon" alt="${searchIconAlt}">
+                    </button>
                 </div>
-                <div class="dropdown-content">
-                    <a href="./#/history" class=".historyButt">${historyLink}</a>
+            </section>
+
+            <section id="headOptions">
+                <div class="dropdown">
+                    <div class="dropbtn">
+                        <h2 id="greetingText">${greetingText}</h2>
+                        <img src="img/arrow-down.svg" id="downArrow" alt="${arrowAlt}">
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="./#/history">${historyLink}</a>
+                    </div>
                 </div>
-            </div>
-            <img src="img/cart.svg" class="cartIcon" alt="${cartAlt}">
-            <div class="localeSelector">
-              <label for="locale"><h3>${localeLabel}</h3></label>
-              <select id="locale" class="hamDrop">
-                <option value="en-US">${localeUS}</option>
-                <option value="nl-NL">${localeNL}</option>
-                <option value="zh-CN">${localeCN}</option>
-              </select>
-            </div>
-        </section>
-    </header>
-    <nav>
-        <!-- nav links here -->
-        <ul>
-            <li><a href="./#/" class="navLink" id="">${navLinkHome}</a></li>
-            <li><a href="./#/droids" class="navLink" id="droids">${navLinkDroids}</a></li>
-            <li><a href="./#/vehicles" class="navLink" id="vehicles">${navLinkVehicles}</a></li>
-        </ul>
-    </nav>
-    `;
-        return view
+
+                <img src="img/cart.svg" class="cartIcon" alt="${cartAlt}">
+
+                <div class="localeSelector">
+                    <label for="locale"><h3>${localeLabel}</h3></label>
+                    <select id="locale" class="hamDrop">
+                        <option value="en-US">${localeUS}</option>
+                        <!-- <option value="nl-NL">${localeNL}</option> -->
+                        <option value="zh-CN">${localeCN}</option>
+                    </select>
+                </div>
+            </section>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="./#/" class="navLink" id="">${navLinkHome}</a></li>
+                <li><a href="./#/droids" class="navLink" id="droids">${navLinkDroids}</a></li>
+                <li><a href="./#/vehicles" class="navLink" id="vehicles">${navLinkVehicles}</a></li>
+            </ul>
+        </nav>
+        `;
+
+        return view;
     },
-    after_render: async () => {
 
-        //cart slider functionality
+    after_render: async () => {
+        //cart
         var cartIcons = document.querySelectorAll(".cartIcon");
-        //show/hide the cart when cart icon is clicked
-        for(let icon of cartIcons) {
+        for (let icon of cartIcons) {
             icon.addEventListener("click", showCart, false);
         }
 
-        //add click listener to clse cart when user clicks anywhere else on page
+        //hide cart
         var overlayBG = document.querySelector('.bg');
         overlayBG.addEventListener('click', hideCart, false);
 
+        //logo click → home
         var logo = document.querySelector("#logo");
-        //redirect to home on logo click
-        logo.addEventListener("click", function() {
-            location.href="./#";
+        logo.addEventListener("click", function () {
+            location.href = "./#";
         }, false);
 
-        //underline active link
-        //figure out what resource path we're at and add the activeLink class so it can be styled in css
+        //underline nav
         let request = Utils.parseRequestURL();
-        //link animation stuff
         let navLinks = document.querySelectorAll(".navLink");
-        for(let cur of navLinks) {
+        for (let cur of navLinks) {
             cur.classList.remove("activeLink");
             cur.classList.remove("inactiveLink");
-            if(cur.id == request.resource) {
+            if (cur.id === request.resource) {
                 cur.classList.add("activeLink");
-            }
-            else {
+            } else {
                 cur.classList.add("inactiveLink");
             }
         }
 
+        //locale selector
         drop = document.querySelector('#locale');
-        //show selected locale in dropdown
         drop.value = locale;
-        //listen for locale changes
         drop.addEventListener("input", changeLocale, false);
     }
-}
+};
 
-//function to hide cart (only when it's currently visible)
+// hide cart
 var hideCart = e => {
-    console.log('click to hide triggered');
-    var slider = document.querySelector(".cartSlider")
+    var slider = document.querySelector(".cartSlider");
     var bg = document.querySelector('.bg');
-
     slider.classList.remove('showCart');
     bg.classList.remove('overlay');
-}
+};
 
-//function to change locale and reload page
-var changeLocale = (e) => {
-    let newLocale = drop.value;
-    updateLocale(newLocale);
+var changeLocale = () => {
+    updateLocale(drop.value);
 }
 
 export default Navbar;

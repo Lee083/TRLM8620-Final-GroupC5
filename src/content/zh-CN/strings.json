@@ -1,4 +1,8 @@
 {
+    "page": {
+    "title": "银河本地化补给站"
+},
+    
     "title": {
         "1": "3P0 机器人",
         "2": "DUM 系列维修机器人",
@@ -51,7 +55,7 @@
     },
 
     "Home": {
-        "welcomeTitle": "欢迎来到 Galaxy L10n Supplies！",
+        "welcomeTitle": "欢迎来到银河本地化补给站！",
         "welcomeSubtitle": "我们提供你征服银河全球化挑战（G11n）所需的一切装备。",
         "symbolAlt": "帝国币符号"
     },
