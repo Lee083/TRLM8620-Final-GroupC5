@@ -960,4 +960,7 @@ p {
   margin-bottom: 5px;
 }
 
+body {
+    font-family: 'Noto Sans SC', 'Montserrat', sans-serif;
+}
 /*# sourceMappingURL=style.css.map */

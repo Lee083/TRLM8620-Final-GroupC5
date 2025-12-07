@@ -29,6 +29,10 @@
         "12": "Affectionately known as a \"wishbone\" to Rebel Alliance and New Republic pilots, the Y-wing starfighter is deployed as a fighter-bomber, designed to fight its way to its objective, deliver its payload of high explosives, and fight its way out again. Its weaponry includes two laser cannons, two ion cannons, and two proton torpedo launchers. An astromech droid, such as an R2 unit, can be plugged into a socket behind the cockpit to act as a co-pilot and manage the ship's various systems.",
         "13": "A pretty good droid for coordinating attacks. Not good at fighting, just good at planning."
     },
+    "type": {
+        "1": "Droid",
+        "2": "Vehicle"
+    },
     "Navbar": {
         "searchPlaceholder": "What are you looking for?",
         "searchButtonLabel": "search products",
@@ -43,15 +47,15 @@
         "navLinkVehicles": "VEHICLES"
     },
     "Home": {
-        "welcomeSubtitle": "We provide everything you need to take on the Galactization (G11n) Challenge (and win).",
-        "symbolAlt": "Imperial Credit currency symbol"
-    },
+    "welcomeTitle": "Welcome to Galaxy L10n Supplies!",
+    "welcomeSubtitle": "We provide everything you need to take on the Galactization (G11n) Challenge (and win).",
+    "symbolAlt": "Imperial Credit currency symbol"
+},
     "Browse": {
         "browseTitleAll": "All",
         "browseTitleDroids": " droids",
         "browseTitleVehicles": " vehicles"
     },
-    
     "Checkout": {
         "checkoutTitle": "Checkout",
         "shipSectionLabel": "Shipping Info",
@@ -117,7 +121,7 @@
         "localeCN": "Chinese (PRC)",
         "localeDE": "German (FRG)",
         "LocaleTW": "Chinese (TW)",
-        "Locale419": "Spanish (LatAm)"  
+        "Locale419": "Spanish (LatAm)"
     },
     "Special": "Special"
 }
