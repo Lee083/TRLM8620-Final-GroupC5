@@ -117,6 +117,43 @@ let Navbar = {
         drop = document.querySelector('#locale');
         drop.value = locale;
         drop.addEventListener("input", changeLocale, false);
+    
+        // ---------------------------------------------------------
+        // START OF NEW SEARCH LOGIC
+        // ---------------------------------------------------------
+        
+        // 1. Select the search input using the CLASS name you used in the HTML
+        let searchInput = document.querySelector(".searchTerm");
+
+        // 2. Add the event listener
+        if (searchInput) {
+            searchInput.addEventListener("keyup", function (e) {
+                // Get the text the user typed, converted to lowercase
+                let term = e.target.value.toLowerCase();
+
+                // Select all product cards (Home and Browse both use the <article> tag)
+                let products = document.querySelectorAll("article");
+
+                products.forEach(product => {
+                    // Find the title inside the product card (inside the <h3> tag)
+                    let titleElement = product.querySelector("h3");
+                    
+                    if (titleElement) {
+                        let titleText = titleElement.innerText.toLowerCase();
+
+                        // If the title contains the search term, show it. Otherwise, hide it.
+                        if (titleText.includes(term)) {
+                            product.style.display = ""; // Reset to default (show)
+                        } else {
+                            product.style.display = "none"; // Hide
+                        }
+                    }
+                });
+            });
+        }
+        // ---------------------------------------------------------
+        // END OF NEW SEARCH LOGIC
+        // ---------------------------------------------------------
     }
 };
 
