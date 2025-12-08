@@ -135,11 +135,7 @@
     "LocaleSelector": {
         "localeLabel": "语言：",
         "localeUS": "英语（美国）",
-        "localeNL": "荷兰语（荷兰）",
-        "localeCN": "中文（中国）",
-        "localeDE": "德语（德国）",
-        "LocaleTW": "中文（台湾）",
-        "Locale419": "西班牙语（拉美）"
+        "localeCN": "中文（中国）"
     },
 
     "Special": "特别"
