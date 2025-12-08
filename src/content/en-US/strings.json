@@ -1,8 +1,8 @@
 {
     "page": {
-    "title": "Galaxy L10n Supplies"
-},
-    
+        "title": "Galaxy L10n Supplies"
+    },
+
     "title": {
         "1": "3P0",
         "2": "DUM-series Droid",
@@ -18,6 +18,7 @@
         "12": "Y-Wing Fighter",
         "13": "Super Tactical Droid"
     },
+
     "desc": {
         "1": "Each droid is equipped with a SyntheTech AA-1 VerboBrain making them capable of storing enormous amounts of information, the additional memory space is often used to keep communication modules in the active memory so that long delays could be avoided while searching for linguistic information on mid-translation. A TranLang III communications module allows them to be fluent in over six million forms of communication. They also have the skills necessary to quickly analyze new unregistered languages and translate them into more well-known ones.",
         "2": "Designed for maintaining podracers, pit droids are affordable, durable repair droids. Pit droids stand at a height of 1.19 meters but have the ability to fold into a compact form when not in use. This feature can be toggled by tapping their nose.",
@@ -33,10 +34,12 @@
         "12": "Affectionately known as a \"wishbone\" to Rebel Alliance and New Republic pilots, the Y-wing starfighter is deployed as a fighter-bomber, designed to fight its way to its objective, deliver its payload of high explosives, and fight its way out again. Its weaponry includes two laser cannons, two ion cannons, and two proton torpedo launchers. An astromech droid, such as an R2 unit, can be plugged into a socket behind the cockpit to act as a co-pilot and manage the ship's various systems.",
         "13": "A pretty good droid for coordinating attacks. Not good at fighting, just good at planning."
     },
+
     "type": {
         "1": "Droid",
         "2": "Vehicle"
     },
+
     "Navbar": {
         "searchPlaceholder": "What are you looking for?",
         "searchButtonLabel": "search products",
@@ -50,16 +53,19 @@
         "navLinkDroids": "DROIDS",
         "navLinkVehicles": "VEHICLES"
     },
+
     "Home": {
-    "welcomeTitle": "Welcome to Galaxy L10n Supplies!",
-    "welcomeSubtitle": "We provide everything you need to take on the Galactization (G11n) Challenge (and win).",
-    "symbolAlt": "Imperial Credit currency symbol"
-},
+        "welcomeTitle": "Welcome to Galaxy L10n Supplies!",
+        "welcomeSubtitle": "We provide everything you need to take on the Galactization (G11n) Challenge (and win).",
+        "symbolAlt": "Imperial Credit currency symbol"
+    },
+
     "Browse": {
         "browseTitleAll": "All",
         "browseTitleDroids": " droids",
         "browseTitleVehicles": " vehicles"
     },
+
     "Checkout": {
         "checkoutTitle": "Checkout",
         "shipSectionLabel": "Shipping Info",
@@ -89,10 +95,12 @@
         "successMessage": "Order placed successfully!",
         "noItemMessage": "Add items to cart to checkout."
     },
+
     "ProductShow": {
         "qtyLabel": "Qty: ",
         "addToCartLabel": "ADD TO CART"
     },
+
     "Cart": {
         "cartTitle": "Shopping Cart",
         "noItemMsg": "No items in cart.",
@@ -101,11 +109,13 @@
         "checkoutLabel": "CHECKOUT",
         "closeAlt": "Close Cart"
     },
+
     "Order": {
         "statusProcessing": "Processing",
         "statusShipped": "Shipped",
         "statusDelivered": "Delivered"
     },
+
     "OrderHistory": {
         "historyTitle": "Order History",
         "dateHeading": "Date",
@@ -113,12 +123,15 @@
         "totalHeading": "Total",
         "statusHeading": "Status"
     },
+
     "Error404": {
         "errorMessage": "404 Error: Page not found."
     },
+
     "Bottombar": {
         "menuAlt": "open sidebar menu"
     },
+
     "LocaleSelector": {
         "localeLabel": "Locale: ",
         "localeUS": "English (USA)",
@@ -128,9 +141,10 @@
         "LocaleTW": "Chinese (TW)",
         "Locale419": "Spanish (LatAm)"
     },
+
     "Special": "Special",
 
-    "Price":{
+    "Price": {
         "1": "3000",
         "2": "800",
         "3": "4300",
