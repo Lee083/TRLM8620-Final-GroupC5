@@ -22,7 +22,10 @@ let Home = {
                     <div class="gridDes">
                         <h3>${product.title}</h3>
                         <div class="gridPrice">
-                            ${i18n.formatCurrency(product.price, "b")}
+                            ${ i18n.getString("Price", product.productID) 
+                                ? `<h4 class="price">¥${i18n.getString("Price", product.productID)}</h4>` 
+                                : i18n.formatCurrency(product.price, "b") 
+                            }
                         </div>
                     </div>
                 </article>`;

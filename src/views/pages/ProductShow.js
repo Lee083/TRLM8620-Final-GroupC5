@@ -33,7 +33,10 @@ let ProductShow = {
                 <article class="detailContent">
                     <h1>${product.title}</h1>
                     <div class="gridPrice">
-                        ${i18n.formatCurrency(product.price, "b")}
+                        ${ i18n.getString("Price", product.productID) 
+                            ? `<h4>¥${i18n.getString("Price", product.productID)}</h4>` 
+                            : i18n.formatCurrency(product.price, "b") 
+                        }
                     </div>
                     <div class="qty">
                         <h3>${qtyLabel}</h3>
