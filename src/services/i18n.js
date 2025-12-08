@@ -52,8 +52,7 @@ const i18n = {
 //used to determine the correct currency symbol
 var currencyMap = {
     'en-US': 'USD',
-    'zh-CN': 'CNY',
-    'nl-NL': 'EUR'
+    'zh-CN': 'CNY'
 };
 
 //function to perform rough conversion from galactic credits to real currencies

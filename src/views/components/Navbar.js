@@ -65,7 +65,6 @@ let Navbar = {
                     <label for="locale"><h3>${localeLabel}</h3></label>
                     <select id="locale" class="hamDrop">
                         <option value="en-US">${localeUS}</option>
-                        <!-- <option value="nl-NL">${localeNL}</option> -->
                         <option value="zh-CN">${localeCN}</option>
                     </select>
                 </div>
