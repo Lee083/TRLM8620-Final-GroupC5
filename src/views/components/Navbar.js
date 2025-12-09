@@ -22,9 +22,6 @@ let Navbar = {
         let navLinkVehicles = i18n.getString("Navbar", "navLinkVehicles");
 
         let localeLabel = i18n.getString("LocaleSelector", "localeLabel");
-        let localeUS = i18n.getString("LocaleSelector", "localeUS");
-        let localeCN = i18n.getString("LocaleSelector", "localeCN");
-        let localeNL = i18n.getString("LocaleSelector", "localeNL");
 
         // ⭐ 动态决定 logo 图
         let logoPath = "img/logo.png";
@@ -32,7 +29,7 @@ let Navbar = {
             logoPath = "img/logo_zh.png";
         }
 
-        // ⭐ HTML 里只放变量，不放 JS 逻辑
+        // ⭐ HTML 里语言选项使用原生名称，不翻译
         let view = `
         <header>
             <section>
@@ -64,8 +61,8 @@ let Navbar = {
                 <div class="localeSelector">
                     <label for="locale"><h3>${localeLabel}</h3></label>
                     <select id="locale" class="hamDrop">
-                        <option value="en-US">${localeUS}</option>
-                        <option value="zh-CN">${localeCN}</option>
+                        <option value="en-US">English (USA)</option>
+                        <option value="zh-CN">中文（中国）</option>
                     </select>
                 </div>
             </section>
